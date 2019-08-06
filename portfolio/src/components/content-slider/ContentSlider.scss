@@ -10,6 +10,6 @@
   @media screen and ( max-width: 768px ) {
     width: 100%;
     margin-left: 0;
-    min-height: 500px; /* temporary to force overflow */
+    min-height: 100vh; /* temporary to force overflow */
   }
 }

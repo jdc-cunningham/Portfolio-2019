@@ -1,34 +1,37 @@
-import React, { useState, useEffect, createContext, useContext, useRef } from 'react';
+import React, { Component, useState, useEffect, createContext, useContext, useRef } from 'react';
 import './App.scss';
 import ProfileCard from './components/profile-card/ProfileCard';
 import ContentSlider from './components/content-slider/ContentSlider';
 
-// const mobileStateContext = React.createContext({
-//   mobileScrolled: false
-// });
-
-const handleScroll = () => {
-  let curMobileScrolled = false;
-  if ( window.innerWidth < 768 && window.pageYOffset > 0 ) {
-    curMobileScrolled = true;
+class App extends Component {
+  state = {
+    mobileScrolled: false
   }
 
-  console.log( window.pageYOffset );
-};
+  handleScroll = this.handleScroll.bind( this );
 
-function App() {
-  const profileCardRef = useRef( null );
-  
-  useEffect( () => {
-    window.addEventListener('scroll', handleScroll );
-  }, []);
+  handleScroll() {
+    let curMobileScrolled = false;
+    if ( window.innerWidth < 768 && window.pageYOffset > 0 ) {
+      curMobileScrolled = true;
+    }
+    this.setState({
+      mobileScrolled: curMobileScrolled
+    });
+  };
 
-  return (
-    <div className="App">
-      <ProfileCard ref={ profileCardRef } />
-      <ContentSlider />
-    </div>
-  );
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll );
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <ProfileCard mobileScrolled={ this.state.mobileScrolled } />
+        <ContentSlider />
+      </div>
+    );
+  }
 }
 
 export default App;

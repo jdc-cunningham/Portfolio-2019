@@ -5,7 +5,6 @@ import profileImg from './../../assets/person/profile.jpg';
 
 const initState = {
   person: {
-    falsy: true,
     profileImgAlt: USERDATA.profileImgAlt,
     name: USERDATA.name,
     title: USERDATA.title,
@@ -14,7 +13,7 @@ const initState = {
   }
 }
 
-const ProfileCard = ( ) => {
+const ProfileCard = ( props ) => {
   const [state, setState] = useState( initState );
 
   const personSkillSet = state.person.skillSet,
@@ -52,7 +51,7 @@ const ProfileCard = ( ) => {
   });
   
   return (
-    <div className="ProfileCard">
+    <div className={ props.mobileScrolled ? "ProfileCard mobile-scrolled" : "ProfileCard" }>
       <img className="ProfileCard__profile-img" src={ profileImg } alt={ state.person.profileImgAlt } />
       <h1 className="ProfileCard__person-name">{ state.person.name }</h1>
       <h2 className="ProfileCard__person-title">{ state.person.title }</h2>
