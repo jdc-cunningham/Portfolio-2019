@@ -1,0 +1,14 @@
+.ProfileCard {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: calc( 30% - 1em );
+  margin-right: 1em;
+}
+
+.ProfileCard__profile-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}

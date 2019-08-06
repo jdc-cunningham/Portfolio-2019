@@ -1,0 +1,16 @@
+.App {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-width: 1440px;
+  border: solid 1px black;
+
+  @media screen and ( max-width: 1440px ) {
+    max-width: 1440px;
+  }
+
+  .ProfileCard {
+
+  }
+}
