@@ -3,12 +3,12 @@ const USERDATA = {
   name: "Name",
   title: "Professional Title",
   skillSet: {
-    "front end": [
+    "Front end": [
       'HTML, HTML5',
       'CSS, CSS3, SASS/SCSS',
-      'JavaScript, jQuery, ReactJS, Vue',
+      'JavaScript, jQuery, ReactJS',
     ],
-    "back end": [
+    "Back end": [
       "PHP/Laravel, Python",
       "MySQL"
     ],
@@ -16,13 +16,13 @@ const USERDATA = {
       "Linux Admin"
     ],
     "Hardware": [
-      "Minor eg. RaspberryPi, Arduino"
+      "Minor eg. Raspberry Pi, Arduino"
     ]
   },
   contact: {
-    email: "",
-    github: "",
-    resume: ""
+    email: "name@example.com",
+    github: "github.com/name",
+    resume: "example.com/resume.pdf"
   }
 };
 
