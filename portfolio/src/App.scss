@@ -7,10 +7,11 @@
   min-height: calc( 100vh - 4em );
 
   @media screen and ( max-width: 1280px ) {
-    max-width: 1280px;
+    min-width: calc( 100vw - 4em );
   }
 
-  .ProfileCard {
-
+  @media screen and ( max-width: 768px ) {
+    position: relative;
+    display: block;
   }
 }

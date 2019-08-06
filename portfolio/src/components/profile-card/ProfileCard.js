@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ProfileCard.scss';
 import USERDATA from './../../assets/demo-data/userData';
 import profileImg from './../../assets/person/profile.jpg';
 
-const ProfileCard = () => {
-  const state = {
-    person: {
-      profileImgAlt: USERDATA.profileImgAlt,
-      name: USERDATA.name,
-      title: USERDATA.title,
-      skillSet: USERDATA.skillSet, // expects object of arrays
-      contact: USERDATA.contact // expects array of strings
-    }
+const initState = {
+  person: {
+    falsy: true,
+    profileImgAlt: USERDATA.profileImgAlt,
+    name: USERDATA.name,
+    title: USERDATA.title,
+    skillSet: USERDATA.skillSet, // expects object of arrays
+    contact: USERDATA.contact // expects array of strings
   }
+}
+
+const ProfileCard = ( ) => {
+  const [state, setState] = useState( initState );
 
   const personSkillSet = state.person.skillSet,
         personSkillSetHTML = Object.keys( personSkillSet ).map( (skillKey, skillKeyIndex ) => {
@@ -38,11 +41,11 @@ const ProfileCard = () => {
     if ( contactStr.length ) {
       if ( contactKey === 'email' ) {
         return (
-          <span><label>email: </label><a href={ "mailto:" + contactStr }>{ contactStr }</a></span>
+          <span key={ index }><label>email: </label><a href={ "mailto:" + contactStr }>{ contactStr }</a></span>
         )
       } else {
         return (
-          <span><label>{ contactKey }:</label> <a href={ contactStr }>{ contactStr }</a></span>
+          <span key={ index }><label>{ contactKey }:</label> <a href={ contactStr }>{ contactStr }</a></span>
         )
       }
     }

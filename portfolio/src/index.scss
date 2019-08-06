@@ -16,6 +16,10 @@ body {
   * {
     box-sizing: border-box;
   }
+
+  @media screen and ( max-width: 768px ) {
+    align-items: flex-start;
+  }
 }
 
 code {

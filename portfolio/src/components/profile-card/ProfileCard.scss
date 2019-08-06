@@ -8,6 +8,16 @@
   box-shadow: 1px 1px 2px #787878;
   padding: 2em;
 
+  @media screen and ( max-width: 1280px ) {
+    width: calc( 40% - 1em );
+  }
+
+  @media screen and ( max-width: 768px ) {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 1em;
+  }
+
   h3 {
     display: flex;
     align-items: center;
@@ -69,5 +79,6 @@
     display: block;
     width: 100%;
     text-align: left;
+    padding-left: 1em;
   }
 }
