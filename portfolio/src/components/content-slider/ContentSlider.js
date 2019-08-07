@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './ContentSlider.scss';
 import USERPROJECTS from './../../assets/demo-data/userProjects'; // will be replaced by API
 
@@ -18,14 +18,6 @@ const ContentSlider = () => {
         initProjects = getActiveProjectObj( initUserProjects, initProjectId ),
         [projects, setProject] = useState( initProjects );
 
-  useEffect(() => {
-    console.log('ue first');
-  }, []);
-
-  useEffect(() => {
-    console.log('ue state change');
-  }, [projects]);
-
   // this is ugly
   const activeProjectSliderImage = typeof projects.active.photos[0] !== undefined ?
           projects.active.photos[0] : '';
@@ -41,7 +33,7 @@ const ContentSlider = () => {
         className={ projectKey === projects.activeProjectId ? 'project-slider__project-tile active' : 'project-slider__project-tile' }
         style={{ backgroundImage: "url('/demo-images/" + projectPhoto }}
         onClick={ 
-          ( projectKey ) => {
+          () => {
             localStorage.setItem( 'projectId', curProjectKey );
             setProject( getActiveProjectObj(initUserProjects, curProjectKey) );
         }}>
@@ -49,8 +41,6 @@ const ContentSlider = () => {
       </button>
     )
   });
-
-  console.log( activeProjectSliderImage );
 
   return (
     <div className="ContentSlider">
