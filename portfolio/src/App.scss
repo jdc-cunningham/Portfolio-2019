@@ -1,3 +1,5 @@
+@import './assets/styles/variables.scss';
+
 .App {
   display: flex;
   align-items: stretch;
@@ -6,12 +8,13 @@
   min-width: 1280px;
   min-height: calc( 100vh - 4em );
 
-  @media screen and ( max-width: 1280px ) {
+  @media screen and ( max-width: $screen-lg ) {
     min-width: calc( 100vw - 4em );
   }
 
-  @media screen and ( max-width: 768px ) {
+  @media screen and ( max-width: $screen-sm ) {
     position: relative;
     display: block;
+    padding: 1em;
   }
 }

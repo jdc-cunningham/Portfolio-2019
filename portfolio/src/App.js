@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, createContext, useContext, useRef } from 'react';
+import React, { Component } from 'react';
 import './App.scss';
 import ProfileCard from './components/profile-card/ProfileCard';
 import ContentSlider from './components/content-slider/ContentSlider';

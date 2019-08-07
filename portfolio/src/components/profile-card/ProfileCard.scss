@@ -1,3 +1,5 @@
+@import './../../assets/styles/variables.scss';
+
 .ProfileCard {
   display: flex;
   align-items: center;
@@ -9,14 +11,15 @@
   padding: 2em;
   transition: all 0.3s ease-in-out;
 
-  @media screen and ( max-width: 1280px ) {
+  @media screen and ( max-width: $screen-lg ) {
     width: calc( 40% - 1em );
   }
 
-  @media screen and ( max-width: 768px ) {
+  @media screen and ( max-width: $screen-sm ) {
     width: 100%;
     margin-right: 0;
-    margin-top: 1em;
+    margin-top: 2em; // mostly a spacer so scroll up effect is noticeable
+    padding: 1em 2em;
   }
 
   h3 {
@@ -35,20 +38,59 @@
     }
   }
 
-  // .ProfileCard__skill-list,
-  // .ProfileCard__contact-list {
-  //   transition: all 0.3s ease-in-out;
-  //   overflow: hidden;
-  //   transform: scaleY(1);
-  // }
+  .ProfileCard__span {
+    width: 100%;
+    margin: 0;
+  }
 
-  // &.mobile-scrolled {
-  //   .ProfileCard__skill-list,
-  //   .ProfileCard__contact-list {
-  //     transition: all 0.3s ease-in-out;
-  //     transform: scaleY(0);
-  //   }
-  // }
+  .ProfileCard__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .ProfileCard__skill-list,
+  .ProfileCard__contact-list {
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    max-height: 100%;
+  }
+
+  &.mobile-scrolled {
+    .ProfileCard__skill-list,
+    .ProfileCard__contact-list {
+      transition: all 0.3s ease-in-out;
+      max-height: 0;
+    }
+
+    .ProfileCard__person-mobile-email-btn {
+      display: inline-block;
+      width: 100%;
+    }
+
+    .ProfileCard__wrapper {
+      align-items: center;
+      justify-content: flex-start;
+
+      .ProfileCard__profile-img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .ProfileCard__span {
+        padding-left: 2em;
+        width: calc( 100% - 150px );
+
+        .ProfileCard__person-name,
+        .ProfileCard__person-title {
+          text-align: left;
+        }
+      }
+    }
+  }
 }
 
 .ProfileCard__profile-img {
@@ -60,10 +102,30 @@
 
 .ProfileCard__person-name, .ProfileCard__person-title {
   width: 100%;
+  text-align: center;
+}
+
+.ProfileCard__person-name {
+  @media screen and ( max-width: $screen-xs ) {
+    font-size: 1.5em;
+    margin-top: 0;
+  }
 }
 
 .ProfileCard__person-title {
   margin-top: 0;
+
+  @media screen and ( max-width: $screen-xs ) {
+    font-size: 1em;
+  }
+}
+
+.ProfileCard__person-mobile-email-btn {
+  display: none;
+
+  @media screen and ( max-width: $screen-xs ) {
+    font-size: 0.85em;
+  }
 }
 
 .ProfileCard__skill-list {
