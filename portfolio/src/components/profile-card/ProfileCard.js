@@ -38,22 +38,21 @@ const ProfileCard = ( props ) => {
 
   let personContactEmailBtn = null;
   const personContactList = state.person.contact,
-        personContactListHTML = Object.keys( personContactList ).map( (contactKey, index) => {
-    let contactStr = personContactList[ contactKey];
-    if ( contactStr.length ) {
-      if ( contactKey === 'email' ) {
-        personContactEmailBtn = <span key={ index }><label>email: </label><a href={ "mailto:" + contactStr }>{ contactStr }</a></span>;
-        return (
-          personContactEmailBtn
-        )
-      } else {
-        return (
-          <span key={ index }><label>{ contactKey }:</label> <a href={ contactStr }>{ contactStr }</a></span>
-        )
-      }
-    } else {
-      return '';
-    }
+        personContactListHTML = personContactList.map( (contactObj, index) => {
+          
+          if ( Object.getOwnPropertyNames(contactObj).length === 0 ) {
+            return "";
+          } else {
+            if ( contactObj.type === 'email' ) {
+              return (
+                <li><a key={ index } href={ "mailto:" + contactObj.link }>{ contactObj.text }</a></li>
+              )
+            } else {
+              return (
+                <li><a key={ index } href={ contactObj.link }>{ contactObj.text }</a></li>
+              )
+            }
+          }
   });
   
   return (
@@ -72,7 +71,7 @@ const ProfileCard = ( props ) => {
       </ul>
       <div className="ProfileCard__contact-list">
         <h3>Contact</h3>
-        { personContactListHTML }
+        <ul>{ personContactListHTML }</ul>
       </div>
     </div>
   )

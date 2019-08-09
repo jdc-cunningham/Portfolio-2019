@@ -19,11 +19,23 @@ const USERDATA = {
       "Minor eg. Raspberry Pi, Arduino"
     ]
   },
-  contact: {
-    email: "name@example.com",
-    github: "github.com/name",
-    resume: "example.com/resume.pdf"
-  }
+  contact: [
+    {
+      "link": "name@example.com",
+      "text": "name@example.com",
+      "type": "email"
+    },
+    {
+      "link": "https://github.com/username",
+      "text": "GitHub",
+      "type": "link"
+    },
+    {
+      "link": "example.com/resume.pdf",
+      "text": "resume",
+      "type": "link"
+    }
+  ]
 };
 
 export default USERDATA;

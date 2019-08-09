@@ -96,8 +96,8 @@
 }
 
 .ProfileCard__profile-img {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   margin-bottom: 1em;
 }
@@ -154,11 +154,33 @@
 
 .ProfileCard__contact-list {
   width: 100%;
+
+  ul {
+    list-style-type: circle;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 1em;
+      margin: 0;
+
+      &:not( :first-of-type ) {
+        margin-top: 0.25rem;
+      }
+
+      &::before {
+        content: '-'; // not sure why the default disc isn't showing for a list
+        display: block;
+        margin-right: 0.25rem;
+        color: #282828;
+      }
+    }
+  }
   
-  span {
-    display: block;
+  a {
     width: 100%;
     text-align: left;
-    padding-left: 1em;
+    text-decoration: none;
   }
 }

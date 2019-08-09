@@ -51,11 +51,14 @@ const ContentSlider = () => {
       <div className="ContentSlider__project-details">
         <div className="project-details__title-date">
           <h2>{ projects.active.name }</h2>
-          <h3>Date completed: { projects.active.dateCompleted }</h3>
+          <span>
+            <h3>Released: { projects.active.dateCompleted }</h3>
+            <h4>Company: { projects.active.company }</h4>
+          </span>
         </div>
         <div className="project-details__project-info">
           <p>{ projects.active.description }</p>
-          <a href={ projects.active.link }>View Project</a>
+          <a target="_blank" href={ projects.active.link }>View Project</a>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 const USERPROJECTS = {
   'du3dk' : {
     name: "Project name",
+    company: "Company name",
     dateAdded: "08/06/2019",
     dateCompleted: "05/06/2019",
     description: "demo project description",
@@ -21,6 +22,7 @@ const USERPROJECTS = {
   },
   'dd3ee' : {
     name: "Project name 2",
+    company: "Company name",
     dateAdded: "08/06/2019",
     dateCompleted: "03/05/2019",
     description: "demo project description",

@@ -7,9 +7,15 @@
   flex-wrap: wrap;
   min-width: 1280px;
   min-height: calc( 100vh - 4em );
+  max-width: calc( 1440px - 4em );
 
   @media screen and ( max-width: $screen-lg ) {
     min-width: calc( 100vw - 4em );
+  }
+
+  @media screen and ( min-width: $screen-md ) and ( max-width:$screen-lg ) {
+    min-width: 100vw;
+    padding: 2em;
   }
 
   @media screen and ( max-width: $screen-sm ) {
