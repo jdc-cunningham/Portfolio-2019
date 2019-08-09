@@ -45,11 +45,11 @@ const ProfileCard = ( props ) => {
           } else {
             if ( contactObj.type === 'email' ) {
               return (
-                <li><a key={ index } href={ "mailto:" + contactObj.link }>{ contactObj.text }</a></li>
+                <li key={ index }><a href={ "mailto:" + contactObj.link }>{ contactObj.text }</a></li>
               )
             } else {
               return (
-                <li><a key={ index } href={ contactObj.link }>{ contactObj.text }</a></li>
+                <li key={ index }><a href={ contactObj.link }>{ contactObj.text }</a></li>
               )
             }
           }

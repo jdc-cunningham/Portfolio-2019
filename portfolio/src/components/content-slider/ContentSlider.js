@@ -58,7 +58,7 @@ const ContentSlider = () => {
         </div>
         <div className="project-details__project-info">
           <p>{ projects.active.description }</p>
-          <a target="_blank" href={ projects.active.link }>View Project</a>
+          <a target="_blank" rel="noopener noreferrer" href={ projects.active.link }>View Project</a>
         </div>
       </div>
     </div>
