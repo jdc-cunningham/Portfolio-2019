@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import './ContentSlider.scss';
 import USERPROJECTS from './../../assets/demo-data/userProjects'; // will be replaced by API
+import iconArrowLeft from './../../assets/icons/arrow-left.svg';
+import iconArrowRight from './../../assets/icons/arrow-right.svg';
+
+const photoSlider = React.createRef();
 
 const getActiveProjectObj = ( initUserProjects, reqProjectId ) => {
   const initProjects = {
           activeProjectId: reqProjectId,
+          activeSliderIndex: 0,
           userProjects: initUserProjects,
           active: reqProjectId in initUserProjects ? initUserProjects[reqProjectId] : {}
         };
@@ -19,8 +24,8 @@ const ContentSlider = () => {
         [projects, setProject] = useState( initProjects );
 
   // this is ugly
-  const activeProjectSliderImage = typeof projects.active.photos[0] !== undefined ?
-          projects.active.photos[0] : '';
+  const activeProjectSliderImage = typeof projects.active.photos[projects.activeSliderIndex] !== undefined ?
+          projects.active.photos[projects.activeSliderIndex] : '';
 
   const clickableProjectTiles = Object.keys( projects.userProjects ).map( ( projectKey, projectIndex ) => {
     const projectPhoto = projects.userProjects[projectKey].photos[0].length ? projects.userProjects[projectKey].photos[0] : '',
@@ -42,10 +47,55 @@ const ContentSlider = () => {
     )
   });
 
+  const getNextPhotoSrc = ( direction ) => {
+    const photos = projects.active.photos,
+          activeSliderIndex = projects.activeSliderIndex;
+    let newIndex = 0,
+        stateCopy = projects;
+
+    if ( photos.length > 2 ) {
+      if ( direction === 'left' ) {
+        if ( activeSliderIndex > 0 ) {
+          newIndex = activeSliderIndex - 1;
+        } else {
+          newIndex = photos.length - 1;
+        }
+      } else {
+        if ( activeSliderIndex < photos.length - 1 ) {
+          newIndex = activeSliderIndex + 1;
+        } else {
+          newIndex = 0;
+        }
+      }
+    } else {
+      newIndex = 0; // same
+    }
+
+    // localStorage.setItem( 'activeSliderIndex', newIndex ); // again a hack due to intended new state obj being rewritten on render    
+    stateCopy.activeSliderIndex = newIndex;
+    setProject( stateCopy );
+
+    return photos[newIndex];
+  }
+
+  const advanceSlider = ( direction ) => {
+    const nextPhotoSrc = getNextPhotoSrc( direction );
+    photoSlider.current.style.backgroundImage = "url('/demo-images/" + nextPhotoSrc + "')"
+  }
+
   return (
     <div className="ContentSlider">
-      <div className="ContentSlider__photo-slider" style={ {backgroundImage: "url('/demo-images/" + activeProjectSliderImage + "')"} }>
+      <div
+        className="ContentSlider__photo-slider"
+        style={ {backgroundImage: "url('/demo-images/" + activeProjectSliderImage + "')"} }
+        ref={ photoSlider }>
         <div className="photo-slider__banner"></div>
+        <button className="photo-slider__arrow left" type="button" onClick={ () => advanceSlider('left') }>
+          <img src={ iconArrowLeft } alt="previous slide"/>
+        </button>
+        <button className="photo-slider__arrow right" type="button" onClick={ () => advanceSlider('right') }>
+          <img src={ iconArrowRight } alt="next slide"/>
+        </button>
       </div>
       <div className="ContentSlider__project-slider">{ clickableProjectTiles }</div>
       <div className="ContentSlider__project-details">
