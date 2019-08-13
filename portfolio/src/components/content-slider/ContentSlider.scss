@@ -196,9 +196,9 @@
   .project-details__project-info {
     white-space: pre-line;
 
-    @media screen and ( min-width: 992px ) and ( max-width: 1280px ) {
+    @media screen and ( max-width: 1280px ) {
       overflow-y: auto;
-      height: 175px;
+      height: 150px;
     }
   }
 }

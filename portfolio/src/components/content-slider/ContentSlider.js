@@ -63,7 +63,7 @@ const ContentSlider = () => {
   const clickableProjectTiles = Object.keys( projects.userProjects ).map( ( projectKey, projectIndex ) => {
     const projectPhoto = projects.userProjects[projectKey].photos[0].length ? projects.userProjects[projectKey].photos[0] : '',
           curProjectKey = projectKey;
-          
+
     if ( projectIndex + 1 > projects.renderProjectBtns ) {
       return '';
     }
@@ -90,7 +90,7 @@ const ContentSlider = () => {
     let newIndex = 0,
         stateCopy = projects;
 
-    if ( photos.length > 2 ) {
+    if ( photos.length > 1 ) {
       if ( direction === 'left' ) {
         if ( activeSliderIndex > 0 ) {
           newIndex = activeSliderIndex - 1;
@@ -119,6 +119,30 @@ const ContentSlider = () => {
     photoSlider.current.style.backgroundImage = "url('/demo-images/" + nextPhotoSrc + "')"
   }
 
+  const photoSliderArrowLeft = () => {
+    if ( projects.active.photos.length > 1 ) {
+      return (
+        <button className="photo-slider__arrow left" type="button" onClick={ () => advanceSlider('left') }>
+          <img src={ iconArrowLeft } alt="previous slide"/>
+        </button>
+      );
+    } else {
+      return '';
+    }
+  }
+
+  const photoSliderArrowRight = () => {
+    if ( projects.active.photos.length > 1 ) {
+      return (
+        <button className="photo-slider__arrow right" type="button" onClick={ () => advanceSlider('right') }>
+          <img src={ iconArrowRight } alt="next slide"/>
+        </button>
+      );
+    } else {
+      return '';
+    }
+  }
+
   return (
     <div className="ContentSlider">
       <div
@@ -126,12 +150,8 @@ const ContentSlider = () => {
         style={ {backgroundImage: "url('/demo-images/" + activeProjectSliderImage + "')"} }
         ref={ photoSlider }>
         <div className="photo-slider__banner"></div>
-        <button className="photo-slider__arrow left" type="button" onClick={ () => advanceSlider('left') }>
-          <img src={ iconArrowLeft } alt="previous slide"/>
-        </button>
-        <button className="photo-slider__arrow right" type="button" onClick={ () => advanceSlider('right') }>
-          <img src={ iconArrowRight } alt="next slide"/>
-        </button>
+        { photoSliderArrowLeft() }
+        { photoSliderArrowRight() }
       </div>
       <div className="ContentSlider__project-slider">{ clickableProjectTiles }</div>
       <div className="ContentSlider__project-details">
