@@ -1,6 +1,11 @@
 # Portfolio 2019
 Built with ReactJS (create-react-app)
 
+## Be in the right folder
+Please note, the actual app is in the portfolio folder, so you will need to cd into that to run `npm install`, etc... <br />
+Also at this time you can just change the data object files/photos and deploy this as is. <br />
+The eventual goal is a node-based dashboard with API endpoints that feeds this portfolio
+
 ## Basic design
 Below is some basic sketch design, I'm not a designer but I can build pretty much anything designed(not by me). <br />
 It's supposed to be a basic side bar and main content which is a "slider" that goes through projects. <br />
