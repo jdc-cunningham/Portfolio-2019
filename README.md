@@ -22,6 +22,13 @@ This is a basic portfolio object slider that will have unique data eg. unique ph
 <img src="https://raw.githubusercontent.com/jdc-cunningham/reactjs-portfolio-2019/master/portfolio-2019-slider.jpg" alt="basic content slider" width="500px" height="auto">
 
 ## Progress updates
+### 08/17/2019 - added slider/dynamic rendering of project tiles based on resolution
+So I forgot to do this update, I added in a basic photo slider(changes background of photo container). It's not great(no preloader) but it works assuming you have that nice broadband/4G. <br />
+<img src="https://raw.githubusercontent.com/jdc-cunningham/reactjs-portfolio-2019/master/progress-update-08-17-2019__added-photo-slider.gif" alt="basic photo slider(background image)" width="500px" height="auto">
+
+I also added in a way to dynamically render the project tiles based on resolution, so if you scale up/down, the tiles will change in count. It is not done/should be AJAX related so it's not static but that's in the future. <br />
+The tiles hiding are not rendered when the state is updated vs. hiding by CSS.
+<img src="https://raw.githubusercontent.com/jdc-cunningham/reactjs-portfolio-2019/master/progress-update-08-17-2019__dynamic-project-tile-render-from-resolution.gif" alt="dynamic project tile rendering based on screen resolution" width="500px" height="auto">
 
 ### 08/06/2019 - basic content load
 I have something that is usable at this point, though the data is fixed and images are not dynamic/included in repo. The content slider is also not complete yet, it has some features not implemented yet like filtering.
