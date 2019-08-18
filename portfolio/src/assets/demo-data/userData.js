@@ -12,9 +12,6 @@ const USERDATA = {
       "PHP/Laravel, Python",
       "MySQL"
     ],
-    "DevOps": [
-      "Linux Admin"
-    ],
     "Hardware": [
       "Minor eg. Raspberry Pi, Arduino"
     ]
